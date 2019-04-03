@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Destinations;
+use App\Packages;
 use Illuminate\Http\Request;
 
-class ItineraryController extends Controller
+class DestinationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class ItineraryController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

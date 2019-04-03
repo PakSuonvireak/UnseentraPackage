@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Packages;
+use App\Destinations;
 
 class PackageController extends Controller
 {
@@ -15,7 +16,7 @@ class PackageController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $packages = Packages::all()->where('author_id', $user->id);
+        $packages = Packages::all();
 
         return view('package.index', compact('packages'));
     }
@@ -52,10 +53,9 @@ class PackageController extends Controller
         $user = auth()->user();
         $packages = Packages::findOrFail($id);
         $itineraries = $packages->itineraries;
-        $tab_count = count($itineraries);
         $first_id = $itineraries->first();
 
-        return view('package.package', compact('packages', 'user', 'itineraries', 'tab_count', 'first_id'));
+        return view('package.package', compact('packages', 'user', 'itineraries', 'first_id'));
     }
 
     /**

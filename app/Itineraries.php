@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Packages;
 use Illuminate\Database\Eloquent\Model;
 
 class Itineraries extends Model

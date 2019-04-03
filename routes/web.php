@@ -18,9 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::resources([
+// 	'package/all' => 'DestinationController',
+// 	'packages/all/{id}' => 'DestinationController',
+// ]);
 
 Route::resources([
 	'package' => 'PackageController',
 	'package/{id}' => 'PackageController',
-	'package/{id}' => 'ItineraryController',
 ]);

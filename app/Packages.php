@@ -2,12 +2,16 @@
 
 namespace App;
 
-use App\Itineraries;
 use Illuminate\Database\Eloquent\Model;
 
 class Packages extends Model
 {
+
+	function destination() {
+		return $this->belongsTo(Destination::class);
+	}
+
     function itineraries(){
-    	return $this->hasMany(itineraries::class, 'package_id');
+    	return $this->hasMany(Itineraries::class, 'package_id');
     }
 }
