@@ -18,6 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        #myMenu .nav-item .nav-link {
+            color: gray;
+            padding-left: 20px;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+    </style>
+
 </head>
 <body>
     <div id="app">
@@ -49,9 +59,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/package') }}">Package</a>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -76,8 +83,30 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+
+            <div class="contianer-fluid">
+                <div class="row">
+                    @guest
+                        <div class="col-md-12">
+                            @yield('content')
+                        </div>
+                    @else
+                        <div class="col-md-2">
+                            <ul id="myMenu" class="nav navbar-nav">
+                                <li class="nav-item"><a class="nav-link active" href="{{url('/home')}}">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{url('/package')}}">Package</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{url('/destination')}}">Destination</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10">
+                            @yield('content')
+                        </div>
+                    @endguest
+                </div>
+            </div>
+            
         </main>
+
     </div>
 </body>
 </html>

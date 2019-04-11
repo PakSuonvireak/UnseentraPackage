@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Itineraries extends Model
+class Itinerary extends Model
 {
     function package(){
-    	return $this->belongsTo(Packages::class);
+    	return $this->belongsTo(Package::class);
     }
 }

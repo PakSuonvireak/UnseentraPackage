@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Packages extends Model
+class Package extends Model
 {
 
 	function destination() {
@@ -12,6 +12,6 @@ class Packages extends Model
 	}
 
     function itineraries(){
-    	return $this->hasMany(Itineraries::class, 'package_id');
+    	return $this->hasMany(Itinerary::class, 'package_id');
     }
 }

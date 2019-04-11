@@ -25,5 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
 	'package' => 'PackageController',
-	'package/{id}' => 'PackageController',
 ]);
+
+Route::resources([
+	'destination' => 'DestinationController',
+]);
+
+Route::resources([
+	'itinerary' => 'ItineraryController',
+]);
+

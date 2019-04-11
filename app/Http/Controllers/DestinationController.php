@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Destinations;
-use App\Packages;
+use App\Destination;
+use App\Package;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -15,7 +15,9 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        
+        $destinations = Destination::all();
+
+        return view('destination.index', compact('destinations'));
     }
 
     /**
@@ -25,7 +27,9 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        //
+        $action = "create";
+        
+        return view('destination.create', compact('action'));
     }
 
     /**
@@ -36,7 +40,13 @@ class DestinationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $destination = new \App\Destination();
+
+        $destination->name = $request->input("name");
+        $destination->country_name = $request->input("country");
+        $destination->save();
+
+        return redirect('/destination')->with('message', 'Destination has been Added successful !!!');
     }
 
     /**
@@ -47,7 +57,7 @@ class DestinationController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -58,7 +68,10 @@ class DestinationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $destination = Destination::findOrfail($id);
+        $action = "edit";
+
+        return view('destination.create', compact('destination', 'action'));
     }
 
     /**
@@ -70,7 +83,13 @@ class DestinationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $destination = Destination::findOrfail($id);
+
+        $destination->name = $request->input('name');
+        $destination->country_name = $request->input('country');
+        $destination->save();
+
+        return redirect('/destination')->with('message', 'Destination has been Updated successful !!!');
     }
 
     /**

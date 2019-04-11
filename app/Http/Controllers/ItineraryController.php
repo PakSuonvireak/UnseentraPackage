@@ -34,7 +34,13 @@ class ItineraryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $itinerary = new \App\Itinerary();
+        $itinerary->title = $request->input('title');
+        $itinerary->body = $request->input('description');
+        $itinerary->package_id = $request->input('package-id');
+        $itinerary->save();
+
+        return redirect('package/'.$itinerary->package_id.'')->with('message', 'Itinerary has been Added successful !!!');
     }
 
     /**
